@@ -21,15 +21,14 @@ async function loginUser()
 
         const response = await request.text();
 
-        if (response != "FAILED")
-        {
-            localStorage.token = response;
-            localStorage.email = data.email;
-            window.location.href = "users.html";
-        }
-        else
+        if (response == "FAILED")
         {
             alert("Your credentials are incorrect. Try again!");
+            return;
         }
+
+        localStorage.token = response;
+        localStorage.email = data.email;
+        window.location.href = "users.html";
 
 }
